@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import Home from './Components/Home';
+import AnimeInfo from './Components/AnimeInfo';
+import Trending from './Components/Trending';
+import Manga from './Components/Manga';
+import Search from './Components/Search';
+import Random from './Components/RandomAnime';
+import './App.css'
+import MangaInfo from './Components/MangaInfo';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/anime/:id" element={<AnimeInfo />} />
+        <Route path="/trending" element={<Trending />} />
+        <Route path="/manga" element={<Manga />} />
+        <Route path="/manga/:id" element={<MangaInfo />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/random" element={<Random />} />
+      </Routes>
+      <footer>
+        <div>
+          <p>© AnimePlay | All rights reserved.</p>
+        </div>
+      </footer>
+    </Router>
   );
 }
 
